@@ -12,19 +12,20 @@ app.set('port', (process.env.PORT || 5000));
 app.use(express.static(__dirname + '/public'));
 
 app.get('/', function(request, response) {
+  var host = request.get('host');
   response.send(
 	"<b>Concur Web Flow Demo</b><br/><br/>" +
-    "<b>Step 1</b> - <a href='https://www.concursolutions.com/net2/oauth2/Login.aspx?client_id=" + client_id + "&scope=ITINER&redirect_uri=https://stark-island-9579.herokuapp.com/redirect&state=OPTIONAL_APP_DEFINED_STATE'><b>Login to Concur</b></a>" +
+    "<b>Step 1</b> - <a href='https://www.concursolutions.com/net2/oauth2/Login.aspx?client_id=" + client_id + "&scope=ITINER&redirect_uri=https://" + host + "/redirect&state=OPTIONAL_APP_DEFINED_STATE'><b>Login to Concur</b></a>" +
 	"&nbsp;(This link is pointing to the href below...) <br/><br/>" +
-    "<textarea rows='4' cols='100'>" + "https://www.concursolutions.com/net2/oauth2/Login.aspx?client_id=gA42rKGFxoVd9Toad1oR4e&scope=ITINER&redirect_uri=https://stark-island-9579.herokuapp.com/redirect&state=OPTIONAL_APP_DEFINED_STATE".encodeHTML() + "</textarea><br/><br/>" +
-    "<font color='red'>Use the following login credentials after clicking the link above: </font><br/><br/>" +
-    "Username: <b>user50@concurdisrupt.com</b><br/>" +
-    "Password: <b>disrupt</b>"
+    "<textarea rows='4' cols='100'>" + "https://www.concursolutions.com/net2/oauth2/Login.aspx?client_id=" + client_id + "&scope=ITINER&redirect_uri=https://" + host + "/redirect&state=OPTIONAL_APP_DEFINED_STATE".encodeHTML() + "</textarea><br/><br/>"
+    //"<font color='red'>Use the following login credentials after clicking the link above: </font><br/><br/>" +
+    //"Username: <b>user50@concurdisrupt.com</b><br/>" +
+    //"Password: <b>disrupt</b>"
   );
 });
 
 app.get('/redirect', function(request, response) {
-  if(request.query.code == null || request.query.code == "") response.send("Parameter <b>Code</b> was was not passed. Start <a href='https://stark-island-9579.herokuapp.com/'>here</a> again.");
+  if(request.query.code == null || request.query.code == "") response.send("Parameter <b>Code</b> was was not passed. Start <a href='https://" + host + "/'>here</a> again.");
 
   var access_token;
 
