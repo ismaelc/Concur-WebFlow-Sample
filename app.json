@@ -1,0 +1,7 @@
+{
+  "name": "Concur WebFlow Sample",
+  "description": "Configurable live demo of Concur's Web Flow Sample",
+  "repository": "https://github.com/ismaelc/Concur-WebFlow-Sample",
+  "logo": "http://node-js-sample.herokuapp.com/node.svg",
+  "keywords": ["node", "express", "static"]
+}
