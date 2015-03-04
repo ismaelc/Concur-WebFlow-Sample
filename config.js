@@ -4,5 +4,6 @@ var config = {};
 config.concur = {};
 config.concur.client_id = process.env.CLIENT_ID;
 config.concur.client_secret = process.env.CLIENT_SECRET;
+config.concur.scope = process.env.SCOPE;
 
 module.exports = config;
