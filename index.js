@@ -25,6 +25,7 @@ app.get('/', function(request, response) {
 });
 
 app.get('/redirect', function(request, response) {
+  var host = request.get('host');
   if(request.query.code == null || request.query.code == "") response.send("Parameter <b>Code</b> was was not passed. Start <a href='https://" + host + "/'>here</a> again.");
 
   var access_token;
