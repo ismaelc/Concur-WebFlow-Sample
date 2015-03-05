@@ -55,12 +55,12 @@ app.get('/redirect', function(request, response) {
 	  if(concur_scope == "ERECPT") {
 
 	    endpoint = "/api/v3.0/common/receipts";
-	    var transactionDate = new Date(); //"2015-02-16T16:03:24",
+	    var transactionDate = new Date().toISOString(); //"2015-02-16T16:03:24",
 
 	    var ercpt_body =
 		  {
 		    "Type": "Ride",
-		    "TransactionDateTime": "" + transactionDate.toISOString(); ,
+		    "TransactionDateTime": "" + transactionDate,
 		    "Amount": 88.6,
 		    "CurrencyCode": "USD",
 		    "MatchingFact": {
