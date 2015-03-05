@@ -63,7 +63,7 @@ app.get('/redirect', function(request, response) {
 		  "CurrencyCode": "USD",
 		  "MatchingFact": {
 			"Type": "OAuth",
-			"Value": accessToken
+			"Value": "" + accessToken
 		  },
 		  "Merchant": {
 			"Name": "ChrisTEST-RideMerchantName",
