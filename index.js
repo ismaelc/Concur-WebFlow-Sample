@@ -60,7 +60,7 @@ app.get('/redirect', function(request, response) {
 	    var ercpt_body =
 		  {
 		    "Type": "Ride",
-		    "TransactionDateTime": "" + transactionDate,
+		    "TransactionDateTime": "" + transactionDate.toISOString(); ,
 		    "Amount": 88.6,
 		    "CurrencyCode": "USD",
 		    "MatchingFact": {
