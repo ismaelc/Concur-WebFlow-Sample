@@ -63,7 +63,7 @@ app.get('/redirect', function(request, response) {
 		  "CurrencyCode": "USD",
 		  "MatchingFact": {
 			"Type": "OAuth",
-			"Value": "mc2wUaq3zvT5utGiOrfn33tEFHA="
+			"Value": accessToken
 		  },
 		  "Merchant": {
 			"Name": "ChrisTEST-RideMerchantName",
@@ -173,10 +173,10 @@ app.get('/redirect', function(request, response) {
 
   	  "<b>Step 3</b> - After getting the <b>access token</b> from Step 2, run the API call below to post an E-Receipt<br/><br/>" +
 
-  	  "https://www.concursolutions.com//api/v3.0/common/receipts<br/>" +
+  	  "https://www.concursolutions.com/api/v3.0/common/receipts<br/>" +
   	  "&nbsp;&nbsp;Header - 'Authorization: OAuth <b>" + result.accessToken + "</b>' (We got this from Step 2)<br/><br/>" +
 
-  	  "Here's the response we got - <br/><br/>" + "<textarea rows='6' cols='100'>" + result.eRcptResponse.encodeHTML()+ "</textarea>"
+  	  "Here's the response we got - <br/><br/>" + "<textarea rows='6' cols='100'>" + result.eRcptResponse + "</textarea>"
 
     );
   });
