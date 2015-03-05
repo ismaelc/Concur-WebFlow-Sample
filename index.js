@@ -141,8 +141,8 @@ app.get('/redirect', function(request, response) {
       doRequest(host, endpoint, 'POST',
       {
 	    "Authorization": "OAuth " + accessToken,
-	    "Content-Type": "application/json"
-	    //"Content-Length": JSON.stringify(ercpt_body).length
+	    "Content-Type": "application/json",
+	    "Content-Length": JSON.stringify(ercpt_body).length
 	  }, ercpt_body, function(data) {
 		   var eRcptResponse = data;
 		   var result = {
@@ -226,10 +226,6 @@ function doRequest(host, endpoint, method, headers, data, success) {
       success(responseString);
     });
 
-    res.on('error', function(err) {
-	  console.log("ERROR: " + err);
-	  success(err);
-    });
   });
 
   req.write(dataString);
