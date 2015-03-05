@@ -190,8 +190,8 @@ app.listen(app.get('port'), function() {
 // util
 
 function doRequest(host, endpoint, method, headers, data, success) {
-  //var dataString = JSON.stringify(data);
-  var dataString = data;
+  var dataString = JSON.stringify(data);
+  //var dataString = data;
   //var headers = {};
 
   if (method == 'GET') {
@@ -224,6 +224,11 @@ function doRequest(host, endpoint, method, headers, data, success) {
       //var responseObject = JSON.parse(responseString);
       //success(responseObject);
       success(responseString);
+    });
+
+    res.on('error', function(err) {
+	  console.log("ERROR: " + err);
+	  success(err);
     });
   });
 
