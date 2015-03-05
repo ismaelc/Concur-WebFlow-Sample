@@ -19,9 +19,6 @@ app.get('/', function(request, response) {
     "<b>Step 1</b> - <a href='https://www.concursolutions.com/net2/oauth2/Login.aspx?client_id=" + client_id + "&scope=" + concur_scope + "&redirect_uri=https://" + host + "/redirect&state=OPTIONAL_APP_DEFINED_STATE'><b>Login to Concur</b></a>" +
 	"&nbsp;(This link is pointing to the href below...) <br/><br/>" +
     "<textarea rows='4' cols='100'>" + "https://www.concursolutions.com/net2/oauth2/Login.aspx?client_id=" + client_id + "&scope=" + concur_scope + "&redirect_uri=https://" + host + "/redirect&state=OPTIONAL_APP_DEFINED_STATE".encodeHTML() + "</textarea><br/><br/>"
-    //"<font color='red'>Use the following login credentials after clicking the link above: </font><br/><br/>" +
-    //"Username: <b>user50@concurdisrupt.com</b><br/>" +
-    //"Password: <b>disrupt</b>"
   );
 });
 
@@ -52,18 +49,18 @@ app.get('/redirect', function(request, response) {
 		  return val.replace(/<\/?Token>/g,'');
   	  });
 
-  	  var host;
+  	  var host = "www.concursolutions.com";
   	  var endpoint;
 
 	  if(concur_scope == "ERECPT") {
 
-	    host = "www.concursolutions.com";
 	    endpoint = "/api/v3.0/common/receipts";
+	    var transactionDate = new Date(); //"2015-02-16T16:03:24",
 
 	    var ercpt_body =
 		  {
 		    "Type": "Ride",
-		    "TransactionDateTime": "2015-02-16T16:03:24",
+		    "TransactionDateTime": "" + transactionDate,
 		    "Amount": 88.6,
 		    "CurrencyCode": "USD",
 		    "MatchingFact": {
@@ -161,7 +158,6 @@ app.get('/redirect', function(request, response) {
       }
       else if(concur_scope == "ITINER") {
 
-	    host = "www.concursolutions.com";
 	    endpoint = "/api/travel/trip/v1.1";
 
         doRequest(host, endpoint, 'GET',
@@ -231,8 +227,6 @@ app.listen(app.get('port'), function() {
 
 function doRequest(host, endpoint, method, headers, data, success) {
   var dataString = JSON.stringify(data);
-  //var dataString = data;
-  //var headers = {};
 
   if (method == 'GET') {
     endpoint += '?' + querystring.stringify(data);
