@@ -142,6 +142,7 @@ app.get('/redirect', function(request, response) {
       {
 	    "Authorization": "OAuth " + accessToken,
 	    "Content-Type": "application/json"
+	    //"Content-Length": JSON.stringify(ercpt_body).length
 	  }, ercpt_body, function(data) {
 		   var eRcptResponse = data;
 		   var result = {
@@ -189,7 +190,8 @@ app.listen(app.get('port'), function() {
 // util
 
 function doRequest(host, endpoint, method, headers, data, success) {
-  var dataString = JSON.stringify(data);
+  //var dataString = JSON.stringify(data);
+  var dataString = data;
   //var headers = {};
 
   if (method == 'GET') {
