@@ -1,6 +1,6 @@
 # Concur Web Flow Sample
 
-Configurable and zero-coding Concur Web Flow live demo.  Watch this [short 3-minute video](https://www.youtube.com/watch?v=B0VGBSIVXuM) on how to set one up.
+Configurable and zero-coding Concur Web Flow live demo in Heroku. You don't need to know Heroku to get this up and running. Watch this [short 3-minute video](https://www.youtube.com/watch?v=B0VGBSIVXuM) on how to set one up.
 
 Below is a screenshot from the video:
 
@@ -16,4 +16,6 @@ Click the button below to deploy to your Heroku account.
 
 ## Important Notes
 
-The only `SCOPE`s supported for now are `ITINER` (Itinerary) and `ERECPT` (E-Receipts). You can only use one at a time.  For more information on the Concur Web Flow, click [here](https://developer.concur.com/oauth-20/web-flow)
+The only `SCOPE`s supported for now are `ITINER` (Itinerary) and `ERECPT` (E-Receipts). You can only use one at a time.  
+For Itinerary, you need to have existing itineraries in your Concur sandbox.  For E-Receipts, you need to have your E-Receipt API access turned on, to submit an E-Receipt successfully. Consult with your Concur rep, or email chris.ismael@concur.com.
+For more information on the Concur Web Flow, click [here](https://developer.concur.com/oauth-20/web-flow)
